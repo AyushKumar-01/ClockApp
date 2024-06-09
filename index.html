@@ -1,81 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clock App</title>
     <style>
-        *{
-            text-align: center;
-        }
-        body {
-            background-color: #AFDDE5;
-        }
-        #heading {
-            text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .time-container {
-            text-align: center;
-        }
-        .time-box{
-            font-family: Arial, Helvetica, sans-serif;
-            position: absolute;
-            padding: 12px;
-            width: 88vw;
-            font-size: 2.5rem;
-            height: 9vh;
-            border: 1px solid black;
-            border-radius: 5px;
-            top: 20%;
-        }
-        .stopwatch-container {
-            font-family: Arial, Helvetica, sans-serif;
-            position: absolute;
-            padding: 12px;
-            width: 88vw;
-            font-size: 2.5rem;
-            height: 9vh;
-            border: 1px solid black;
-            border-radius: 5px;
-            top: 40%;
-        }
-        .timer-container {
-            font-family: Arial, Helvetica, sans-serif;
-            position: absolute;
-            padding: 12px;
-            width: 88vw;
-            font-size: 2.5rem;
-            height: 9vh;
-            border: 1px solid black;
-            border-radius: 5px;
-            top: 60%;
-        }
-        .emojis {
-            position: absolute;
-            left: 0;
-        }
+      * {
+        text-align: center;
+      }
+      body {
+        background-color: #afdde5;
+      }
+      #heading {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .time-container {
+        text-align: center;
+      }
+      .time-box {
+        background-color: azure;
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        padding: 12px;
+        width: 88vw;
+        font-size: 2.5rem;
+        height: 7.5vh;
+        border: 1px solid black;
+        border-radius: 5px;
+        top: 20%;
+      }
+      .stopwatch-container {
+        background-color: azure;
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        padding: 12px;
+        width: 88vw;
+        font-size: 2.5rem;
+        height: 7.5vh;
+        border: 1px solid black;
+        border-radius: 5px;
+        top: 40%;
+      }
+      .timer-container {
+        background-color: azure;
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        padding: 12px;
+        width: 88vw;
+        font-size: 2.5rem;
+        height: 7.5vh;
+        border: 1px solid black;
+        border-radius: 5px;
+        top: 60%;
+      }
+      .emojis {
+        position: absolute;
+        left: 0;
+        top: 10%;
+      }
+      .stopwatch-container:hover,
+      .timer-container:hover {
+        background-color: rgb(246, 242, 242);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1 id="heading">Clock</h1>
     <div class="time-container">
-        <div id="display" class="time-box"></div>
+      <div id="display" class="time-box"></div>
     </div>
 
-    <div class="stopwatch-container"><span class="emojis">🕜</span>StopWatch</div>
-    <div class="timer-container"><span class="emojis">⌛</span>Timer</div>
+    <div
+      id="stopwatch-btn"
+      onclick="stopwatchDisplay()"
+      class="stopwatch-container"
+    >
+      <span class="emojis">⏱️</span>StopWatch
+    </div>
+    <div id="timer-btn" onclick="timerDisplay()" class="timer-container">
+      <span class="emojis">⌛</span>Timer
+    </div>
 
     <script>
-        let displayTime = document.querySelector('#display');
-        function timeShow(){
-            let date = new Date();
-            let hour = date.getHours();
-            let min = date.getMinutes();
-            let sec = date.getSeconds();
-            displayTime.innerText = `${hour} : ${min} : ${sec}`;
-        }
-        setInterval(timeShow, 1000);
+      let displayTime = document.querySelector("#display");
+      let timer = document.querySelector("#timer-btn");
+      let stopwatch = document.querySelector("#stopwatch-btn");
+
+      function stopwatchDisplay() {
+        console.log("Stopwatch is clicked");
+        window.location.assign("stopwatch.html");
+      }
+      function timerDisplay() {
+        console.log("timer is clicked");
+        window.location.assign("timer.html");
+      }
+      function timeShow() {
+        let date = new Date();
+        let hour = date.getHours();
+        let min = date.getMinutes();
+        let sec = date.getSeconds();
+        displayTime.innerText = `${hour} : ${min} : ${sec}`;
+      }
+      setInterval(timeShow, 1000);
     </script>
-</body>
+  </body>
 </html>

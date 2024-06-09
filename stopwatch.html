@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <style>
+      * {
+        text-align: center;
+      }
+      body {
+        background-color: #afdde5;
+      }
+      #heading {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .display {
+        height: 25vh;
+        width: 50vw;
+        font-size: 80px;
+        text-align: left;
+      }
+      .count-box {
+        border: 1px solid black;
+        height: 70vh;
+        width: 75vw;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+      .btns {
+        width: 100px;
+        font-size: 1.4rem;
+        border-radius: 8px;
+        border: none;
+        margin: 15px;
+        background-color: azure;
+        padding: 9px;
+      }
+      .buttons {
+        display: flex;
+      }
+      #btn3 {
+        position: absolute;
+        bottom: 20%;
+      }
+      #btn4 {
+        position: absolute;
+        bottom: 20%;
+        right: 12%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="heading">Stopwatch</h1>
+    <div class="container">
+      <div class="count-box">
+        <div id="text" class="display">0:00</div>
+        <div class="buttons">
+          <button id="btn1" onclick="start()" class="btns">Start</button>
+          <button id="btn2" onclick="stop()" class="btns">Stop</button>
+          <button id="btn3" onclick="reset()" class="btns">Reset</button>
+          <button id="btn4" onclick="home()" class="btns">Home</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let startBtn = document.getElementById("btn1");
+      let stopBtn = document.getElementById("btn2");
+      let resetBtn = document.getElementById("btn3");
+      let txt = document.querySelector("#text");
+      let output = 0;
+      function start() {
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        timer = setInterval(() => {
+          txt.innerText = output++/ 100;
+        }, 10);
+      };
+      function stop(){
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        clearInterval(timer);
+      }
+      function reset(){
+        startBtn.disabled = false;
+        stopBtn.disabled = false;
+        clearInterval(timer);
+        txt.innerText = "0:00";
+        output=0;
+      }
+      function home(){
+        window.location.assign('index.html');
+      }
+    </script>
+  </body>
+</html>
